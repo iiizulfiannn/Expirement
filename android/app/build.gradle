@@ -167,41 +167,29 @@ android {
             signingConfig signingConfigs.debug
             resValue "string", "CodePushDeploymentKey", ""
         }
-        releasedevelopment {
-            signingConfig signingConfigs.release
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
-            matchingFallbacks = ['release']
-        }
-        releasestaging {
-            signingConfig signingConfigs.release
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
-            matchingFallbacks = ['release']
-        }
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            resValue "string", "CodePushDeploymentKey", "Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"
         }
     }
 
     flavorDimensions "env"
     productFlavors {
         dev {
+            resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
             resValue "string", "app_name", "Expirement Dev"
             applicationIdSuffix ".dev"
         }
         staging {
+            resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
             resValue "string", "app_name", "Expirement Staging"
             applicationIdSuffix ".staging"
         }
         prod {
+            resValue "string", "CodePushDeploymentKey", "Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"
             resValue "string", "app_name", "Expirement"
         }
     }
