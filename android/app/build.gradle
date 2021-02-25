@@ -172,13 +172,14 @@ android {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
+            matchingFallbacks = ['release']
         }
         releaseStaging {
-            matchingFallbacks = ['release']
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
             resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
+            matchingFallbacks = ['release']
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
