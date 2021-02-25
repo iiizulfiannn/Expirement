@@ -16,12 +16,13 @@ const baseURL = selectEnv({
   prod: API_URL_PROD,
 });
 
+const env = NativeModules.RNConfig.env;
+
 let App = () => {
-  const env = NativeModules.RNConfig.env;
   return <Home env={env} baseURL={baseURL} />;
 };
 
-App = CodePush(codePushOptions)(App);
+App = env === 'dev' ? App : CodePush(codePushOptions)(App);
 
 export default App;
 
