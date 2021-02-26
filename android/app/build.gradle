@@ -165,7 +165,6 @@ android {
     buildTypes {
         debug {
             signingConfig signingConfigs.debug
-            resValue "string", "CodePushDeploymentKey", ""
         }
         release {
             // Caution! In production, you need to generate your own keystore file.
@@ -179,16 +178,21 @@ android {
     flavorDimensions "env"
     productFlavors {
         dev {
-            resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
-            resValue "string", "app_name", "Expirement Dev"
+            resValue "string", "CodePushDeploymentKey", ""
+            resValue "string", "app_name", "Expirement Debug"
+        }
+        development {
             applicationIdSuffix ".dev"
+            resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
+            resValue "string", "app_name", "Expirement Dev Release"
         }
         staging {
+            applicationIdSuffix ".staging"
+            matchingFallbacks = ['release']
             resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
             resValue "string", "app_name", "Expirement Staging"
-            applicationIdSuffix ".staging"
         }
-        prod {
+        production {
             resValue "string", "CodePushDeploymentKey", "Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"
             resValue "string", "app_name", "Expirement"
         }
