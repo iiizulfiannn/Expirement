@@ -10,10 +10,10 @@ function selectEnv(envs) {
 }
 
 const baseURL = selectEnv({
+  deb: 'http://localhost:3000',
   dev: 'http://localhost:3000',
-  development: 'http://localhost:3000',
   staging: 'http://staging.com/api',
-  production: 'http://prod.com/api',
+  prod: 'http://prod.com/api',
 });
 
 const env = NativeModules.RNConfig.env;

@@ -183,11 +183,11 @@ android {
 
     flavorDimensions "env"
     productFlavors {
-        dev {
+        deb {
             resValue "string", "CodePushDeploymentKey", ""
             resValue "string", "app_name", "Expirement Debug"
         }
-        development {
+        dev {
             applicationIdSuffix ".dev"
             resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"
             resValue "string", "app_name", "Expirement Dev Release"
@@ -197,7 +197,7 @@ android {
             resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
             resValue "string", "app_name", "Expirement Staging"
         }
-        production {
+        prod {
             resValue "string", "CodePushDeploymentKey", "Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"
             resValue "string", "app_name", "Expirement"
         }
