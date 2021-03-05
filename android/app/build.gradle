@@ -166,15 +166,7 @@ android {
         debug {
             signingConfig signingConfigs.debug
         }
-        releasestaging {
-            signingConfig signingConfigs.release
-            minifyEnabled enableProguardInReleaseBuilds
-            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
-            matchingFallbacks = ['release']
-        }
         release {
-            // Caution! In production, you need to generate your own keystore file.
-            // see https://reactnative.dev/docs/signed-apk-android.
             signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
@@ -183,10 +175,6 @@ android {
 
     flavorDimensions "env"
     productFlavors {
-        deb {
-            resValue "string", "CodePushDeploymentKey", ""
-            resValue "string", "app_name", "Expirement Debug"
-        }
         dev {
             applicationIdSuffix ".dev"
             resValue "string", "CodePushDeploymentKey", "qnobg24E7YyFNwZAfkfoa2-Pr2Kc1_8p5Mcp0"

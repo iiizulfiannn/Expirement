@@ -10,7 +10,6 @@ function selectEnv(envs) {
 }
 
 const baseURL = selectEnv({
-  deb: 'http://localhost:3000',
   dev: 'http://localhost:3000',
   staging: 'http://staging.com/api',
   prod: 'http://prod.com/api',
