@@ -1,6 +1,6 @@
 import React, {createContext, useReducer} from 'react';
 import {useContext} from 'react';
-import {Dimensions, Text, View} from 'react-native';
+import {ActivityIndicator, Dimensions, Text, View} from 'react-native';
 
 export const actionCodePush = {
   SET_DATA: 'SET_DATA',
@@ -72,6 +72,11 @@ const CodePushProvider = ({children}) => {
             }}>
             {codePushState.status}
           </Text>
+          <ActivityIndicator
+            size="large"
+            color="white"
+            style={{marginVertical: 16}}
+          />
           <Text style={{color: 'white', fontSize: 22}}>{totalPercent}%</Text>
         </View>
       )}
