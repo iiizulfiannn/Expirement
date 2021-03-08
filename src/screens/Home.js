@@ -8,7 +8,7 @@ const Home = ({navigation, env, baseURL}) => {
       <Text style={{fontSize: 22, fontWeight: 'bold'}}>{env}</Text>
       <Text>URL {baseURL}</Text>
       <Button title="Details" onPress={() => navigation.navigate('Details')} />
-      {/* <Text>Update Home</Text> */}
+      <Text>Update Home</Text>
     </View>
   );
 };
