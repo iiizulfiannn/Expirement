@@ -3,12 +3,14 @@ import {useFocusEffect} from '@react-navigation/core';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import CodePush from 'react-native-code-push';
 
-const Details = ({navigation}) => {
+const Details = ({navigation, env}) => {
   useFocusEffect(
     useCallback(() => {
-      CodePush.sync({
-        installMode: CodePush.InstallMode.IMMEDIATE,
-      });
+      if (env !== 'dev') {
+        CodePush.sync({
+          installMode: CodePush.InstallMode.IMMEDIATE,
+        });
+      }
     }, []),
   );
 

@@ -9,6 +9,8 @@ import CodePush from 'react-native-code-push';
 import Details from './src/screens/Details';
 import Home from './src/screens/Home';
 
+const codePushOptions = {checkFrequency: CodePush.CheckFrequency.MANUAL};
+
 const env = NativeModules.RNConfig.env;
 
 const selectEnv = (envs) => envs[env] || envs.default;
@@ -23,9 +25,11 @@ const Stack = createStackNavigator();
 
 let App = () => {
   useEffect(() => {
-    CodePush.sync({
-      installMode: CodePush.InstallMode.IMMEDIATE,
-    });
+    if (env !== 'dev') {
+      CodePush.sync({
+        installMode: CodePush.InstallMode.IMMEDIATE,
+      });
+    }
   }, []);
 
   return (
@@ -34,13 +38,13 @@ let App = () => {
         <Stack.Screen name="Home">
           {(props) => <Home {...props} baseURL={baseURL} env={env} />}
         </Stack.Screen>
-        <Stack.Screen name="Details" component={Details} />
+        <Stack.Screen name="Details">
+          {(props) => <Details {...props} env={env} />}
+        </Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
-
-let codePushOptions = {checkFrequency: CodePush.CheckFrequency.MANUAL};
 
 App = env === 'dev' ? App : CodePush(codePushOptions)(App);
 
