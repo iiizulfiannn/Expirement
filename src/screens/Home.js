@@ -34,7 +34,7 @@ const Home = ({navigation, env, baseURL}) => {
   );
 
   return (
-    <View>
+    <View style={{backgroundColor: 'grey'}}>
       <Text>Home Screen</Text>
       <Text style={{fontSize: 22, fontWeight: 'bold'}}>{env}</Text>
       <Text>URL {baseURL}</Text>
@@ -47,13 +47,6 @@ const Home = ({navigation, env, baseURL}) => {
           onPress={() => navigation.navigate('Details')}
         />
       </View>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
-      <Text>Update Home</Text>
     </View>
   );
 };
