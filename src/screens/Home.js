@@ -18,7 +18,7 @@ const Home = ({navigation, env, baseURL}) => {
             setCodePushState({
               action: actionCodePush.SET_DATA,
               param: {
-                status,
+                status: 'Updating ...',
               },
             }),
           (progress) =>
