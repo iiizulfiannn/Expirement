@@ -1,5 +1,5 @@
 import React from 'react';
-import {NativeModules, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
 const Home = ({env, baseURL}) => {
   return (
@@ -7,6 +7,7 @@ const Home = ({env, baseURL}) => {
       <Text>Home Screen</Text>
       <Text style={{fontSize: 22, fontWeight: 'bold'}}>{env}</Text>
       <Text>URL {baseURL}</Text>
+      {/* <Text>Update Home</Text> */}
     </View>
   );
 };

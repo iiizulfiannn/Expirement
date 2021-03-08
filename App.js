@@ -1,13 +1,17 @@
-import React from 'react';
-import {StyleSheet, Text, View, NativeModules} from 'react-native';
+import 'react-native-gesture-handler';
+import React, {useEffect} from 'react';
+
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {NativeModules, StyleSheet} from 'react-native';
 import CodePush from 'react-native-code-push';
+
+import Details from './src/screens/Details';
 import Home from './src/screens/Home';
 
-let codePushOptions = {checkFrequency: CodePush.CheckFrequency.ON_APP_RESUME};
+const env = NativeModules.RNConfig.env;
 
-function selectEnv(envs) {
-  return envs[NativeModules.RNConfig.env] || envs.default;
-}
+const selectEnv = (envs) => envs[env] || envs.default;
 
 const baseURL = selectEnv({
   dev: 'http://localhost:3000',
@@ -15,11 +19,28 @@ const baseURL = selectEnv({
   prod: 'http://prod.com/api',
 });
 
-const env = NativeModules.RNConfig.env;
+const Stack = createStackNavigator();
 
 let App = () => {
-  return <Home env={env} baseURL={baseURL} />;
+  useEffect(() => {
+    CodePush.sync({
+      installMode: CodePush.InstallMode.IMMEDIATE,
+    });
+  }, []);
+
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home">
+          {(props) => <Home {...props} baseURL={baseURL} env={env} />}
+        </Stack.Screen>
+        <Stack.Screen name="Details" component={Details} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 };
+
+let codePushOptions = {checkFrequency: CodePush.CheckFrequency.MANUAL};
 
 App = env === 'dev' ? App : CodePush(codePushOptions)(App);
 
