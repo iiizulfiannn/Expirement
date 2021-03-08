@@ -9,6 +9,10 @@ const Home = ({navigation, env, baseURL}) => {
       <Text>URL {baseURL}</Text>
       <Button title="Details" onPress={() => navigation.navigate('Details')} />
       <Text>Update Home</Text>
+      <Text>Update Home</Text>
+      <Text>Update Home</Text>
+      <Text>Update Home</Text>
+      <Text>Update Home</Text>
     </View>
   );
 };
