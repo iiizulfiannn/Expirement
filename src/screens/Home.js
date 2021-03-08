@@ -1,11 +1,11 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import {useFocusEffect} from '@react-navigation/core';
 import CodePush from 'react-native-code-push';
 import {actionCodePush, useCodePushContext} from '../context/CodePushContext';
 
 const Home = ({navigation, env, baseURL}) => {
-  const {codePushState, setCodePushState} = useCodePushContext();
+  const {setCodePushState} = useCodePushContext();
 
   useFocusEffect(
     useCallback(() => {

@@ -1,6 +1,6 @@
 import React, {createContext, useReducer} from 'react';
 import {useContext} from 'react';
-import {ActivityIndicator, Dimensions, Text, View} from 'react-native';
+import {ActivityIndicator, Dimensions, Text, View, Modal} from 'react-native';
 
 export const actionCodePush = {
   SET_DATA: 'SET_DATA',
@@ -45,40 +45,40 @@ const CodePushProvider = ({children}) => {
     }
   };
 
-  const totalPercent =
-    Math.ceil(
-      codePushState.progress.receivedBytes / codePushState.progress.totalBytes,
-    ) || 0;
+  const {receivedBytes, totalBytes} = codePushState.progress;
+
+  const totalPercent = Math.ceil(receivedBytes / totalBytes) * 100;
   const {height, width} = Dimensions.get('window');
 
   return (
     <CodePushContext.Provider value={{codePushState, setCodePushState}}>
-      {Object.keys(codePushState.progress).length > 0 && (
-        <View
-          style={{
-            position: 'absolute',
-            backgroundColor: 'rgba(52,52,52,.5)',
-            justifyContent: 'center',
-            alignItems: 'center',
-            height,
-            width,
-          }}>
-          <Text
+      {totalBytes > 0 && (
+        <Modal visible={totalBytes > 0} transparent>
+          <View
             style={{
-              marginBottom: 32,
-              fontWeight: 'bold',
-              color: 'white',
-              fontSize: 22,
+              backgroundColor: 'rgba(52,52,52,.8)',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: height,
+              width: width,
             }}>
-            {codePushState.status}
-          </Text>
-          <ActivityIndicator
-            size="large"
-            color="white"
-            style={{marginVertical: 16}}
-          />
-          <Text style={{color: 'white', fontSize: 22}}>{totalPercent}%</Text>
-        </View>
+            <Text
+              style={{
+                marginBottom: 32,
+                fontWeight: 'bold',
+                color: 'white',
+                fontSize: 22,
+              }}>
+              {codePushState.status}
+            </Text>
+            <ActivityIndicator
+              size="large"
+              color="white"
+              style={{marginVertical: 16}}
+            />
+            <Text style={{color: 'white', fontSize: 22}}>{totalPercent}%</Text>
+          </View>
+        </Modal>
       )}
       {children}
     </CodePushContext.Provider>
