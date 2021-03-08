@@ -53,7 +53,7 @@ const CodePushProvider = ({children}) => {
 
   return (
     <CodePushContext.Provider value={{codePushState, setCodePushState}}>
-      {Object.keys(progress).length > 0 && (
+      {Object.keys(codePushState.progress).length > 0 && (
         <View
           style={{
             position: 'absolute',
