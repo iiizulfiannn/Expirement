@@ -53,7 +53,7 @@ const CodePushProvider = ({children}) => {
   return (
     <CodePushContext.Provider value={{codePushState, setCodePushState}}>
       {totalBytes > 0 && (
-        <Modal visible={totalBytes > 0} transparent>
+        <Modal visible={totalBytes > 0} transparent animationType="slide">
           <View
             style={{
               backgroundColor: 'rgba(52,52,52,.8)',
