@@ -177,7 +177,7 @@ android {
     productFlavors {
         dev {
             applicationIdSuffix ".dev"
-            resValue "string", "app_name", "Expirement Dev Release"
+            resValue "string", "app_name", "Expirement Dev"
         }
         staging {
             applicationIdSuffix ".staging"
