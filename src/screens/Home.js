@@ -47,25 +47,6 @@ const Home = ({navigation, env, baseURL}) => {
           onPress={() => navigation.navigate('Details')}
         />
       </View>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
-      <Text>heei</Text>
     </View>
   );
 };
