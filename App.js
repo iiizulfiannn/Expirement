@@ -1,13 +1,12 @@
 import 'react-native-gesture-handler';
-import React, {useEffect} from 'react';
-
+import React from 'react';
+import {NativeModules, StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NativeModules, StyleSheet} from 'react-native';
 import CodePush from 'react-native-code-push';
-
 import Details from './src/screens/Details';
 import Home from './src/screens/Home';
+import {CodePushProvider} from './src/context/CodePushContext';
 
 const codePushOptions = {checkFrequency: CodePush.CheckFrequency.MANUAL};
 
@@ -24,25 +23,19 @@ const baseURL = selectEnv({
 const Stack = createStackNavigator();
 
 let App = () => {
-  useEffect(() => {
-    if (env !== 'dev') {
-      CodePush.sync({
-        installMode: CodePush.InstallMode.IMMEDIATE,
-      });
-    }
-  }, []);
-
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="Home">
-          {(props) => <Home {...props} baseURL={baseURL} env={env} />}
-        </Stack.Screen>
-        <Stack.Screen name="Details">
-          {(props) => <Details {...props} env={env} />}
-        </Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
+    <CodePushProvider>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="Home">
+            {(props) => <Home {...props} baseURL={baseURL} env={env} />}
+          </Stack.Screen>
+          <Stack.Screen name="Details">
+            {(props) => <Details {...props} env={env} />}
+          </Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </CodePushProvider>
   );
 };
 
