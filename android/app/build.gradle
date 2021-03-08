@@ -178,15 +178,15 @@ android {
         dev {
             applicationIdSuffix ".dev"
             resValue "string", "app_name", "Expirement Dev"
-            resValue "string", "CodePushDeploymentKey", ""
+            resValue "string", "CodePushDeploymentKey", '""'
         }
         staging {
             applicationIdSuffix ".staging"
-            resValue "string", "CodePushDeploymentKey", "_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"
+            resValue "string", "CodePushDeploymentKey", '"_8efvtJ-L5v8R_G_p-k9y00Pz3980zKcz4P5i"'
             resValue "string", "app_name", "Expirement Staging"
         }
         prod {
-            resValue "string", "CodePushDeploymentKey", "Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"
+            resValue "string", "CodePushDeploymentKey", '"Bia72zczier0zEk0oFcRNzg5DYzcgZ-838_ZV"'
             resValue "string", "app_name", "Expirement"
         }
     }
