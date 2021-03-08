@@ -18,7 +18,7 @@ const Details = ({navigation, env}) => {
     <View>
       <Button title="kembali" onPress={() => navigation.goBack()} />
       <Text>DetailsScreen</Text>
-      {/* <Text>Update Details</Text> */}
+      <Text>Update Details</Text>
     </View>
   );
 };
