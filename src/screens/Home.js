@@ -1,37 +1,9 @@
-import React, {useCallback, useEffect} from 'react';
+import React from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
-import {useFocusEffect} from '@react-navigation/core';
-import CodePush from 'react-native-code-push';
-import {actionCodePush, useCodePushContext} from '../context/CodePushContext';
+import useCodePushEffect from '../hook/useCodePushEffect';
 
 const Home = ({navigation, env, baseURL}) => {
-  const {setCodePushState} = useCodePushContext();
-
-  useFocusEffect(
-    useCallback(() => {
-      if (env !== 'dev') {
-        CodePush.sync(
-          {
-            installMode: CodePush.InstallMode.IMMEDIATE,
-          },
-          (status) =>
-            setCodePushState({
-              action: actionCodePush.SET_DATA,
-              param: {
-                status: 'Updating ...',
-              },
-            }),
-          (progress) =>
-            setCodePushState({
-              action: actionCodePush.SET_DATA,
-              param: {
-                progress,
-              },
-            }),
-        );
-      }
-    }, []),
-  );
+  useCodePushEffect(env);
 
   return (
     <View style={{flex: 1, backgroundColor: 'white'}}>
